@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Flexbox Examples</title>
+    <style>
+        :root{
+            --bg:#f4f7fb;
+            --card:#ffffff;
+            --accent:#2b8cff;
+            --muted:#6b7280;
+        }
+        body{
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin: 24px;
+            background:var(--bg);
+            color:#111827;
+        }
+
+        h1{font-size:18px;margin-bottom:8px;}
+        p.small{color:var(--muted);font-size:13px;margin-top:0;margin-bottom:16px;}
+
+        .example{
+            background:var(--card);
+            border-radius:8px;
+            padding:16px;
+            box-shadow:0 1px 2px rgba(16,24,40,0.04);
+            margin-bottom:18px;
+        }
+        .label{font-weight:600;margin-bottom:8px;font-size:14px;}
+
+        /* base box style used in examples */
+        .box{
+            background:linear-gradient(180deg,#ffffff 0%, #f0f6ff 100%);
+            border:1px solid rgba(15,23,42,0.06);
+            padding:12px 14px;
+            border-radius:6px;
+            color:#0f172a;
+            font-weight:600;
+            text-align:center;
+            min-width:48px;
+            min-height:40px;
+            box-sizing:border-box;
+        }
+
+        /* Example 1: Row layout */
+        .flex-row{
+            display:flex;
+            gap:12px;
+            justify-content:center; /* main-axis */
+            align-items:center;     /* cross-axis */
+            padding:10px;
+            border-radius:6px;
+            background:linear-gradient(90deg,#f8fafc,#fff);
+        }
+
+        /* Example 2: Column layout */
+        .flex-column{
+            display:flex;
+            flex-direction:column;
+            gap:8px;
+            align-items:flex-start;
+            padding:10px;
+            min-height:160px;
+            justify-content:center;
+            background:linear-gradient(180deg,#fff,#fbfdff);
+        }
+
+        /* Example 3: Wrapping and flexible grow/shrink */
+        .flex-wrap{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            padding:10px;
+            align-items:center;
+            background:linear-gradient(90deg,#fff,#fbfbff);
+        }
+        .flex-wrap .box{ flex:1 1 140px; } /* base: grow, shrink, basis */
+        .flex-wrap .wide{ flex:2 1 220px; } /* takes more space */
+
+        /* small helper row for labels */
+        .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+        .note{font-size:12px;color:var(--muted);}
+    </style>
+</head>
+<body>
+    <h1>Flexbox quick examples</h1>
+    <p class="small">Three short demonstrations: row (align/justify), column (direction), and wrapping with flexible items.</p>
+
+    <div class="example">
+        <div class="label">1) Row layout — justify-content & align-items</div>
+        <div class="flex-row" style="height:100px;">
+            <div class="box">Item A</div>
+            <div class="box">Item B</div>
+            <div class="box">Item C</div>
+        </div>
+        <div class="note" style="margin-top:8px;">The container is a row by default. Try changing justify-content or align-items.</div>
+    </div>
+
+    <div class="example">
+        <div class="label">2) Column layout — flex-direction: column</div>
+        <div class="flex-column">
+            <div class="box" style="width:80%;">Top (80% width)</div>
+            <div class="box" style="width:60%;">Middle (60%)</div>
+            <div class="box" style="width:40%;">Bottom (40%)</div>
+        </div>
+        <div class="note">Column stacks items on the main axis (vertical). Use align-items to control cross-axis alignment.</div>
+    </div>
+
+    <div class="example">
+        <div class="label">3) Wrap & flexible items — flex: grow shrink basis</div>
+        <div class="flex-wrap">
+            <div class="box">1</div>
+            <div class="box wide">2 (wide)</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+        </div>
+        <div class="note">Items wrap when needed. The "wide" item uses flex:2 so it occupies more space.</div>
+    </div>
+
+    <script>
+        // Optional: quick interactive toggles for experimenting in the browser console:
+        // document.querySelector('.flex-row').style.justifyContent = 'space-between'
+    </script>
+</body>
+</html></div>
