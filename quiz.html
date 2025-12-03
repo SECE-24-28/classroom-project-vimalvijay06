@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Professional Quiz App</title>
+    <style>
+        body{
+            background:#f4f4f4;
+            font-family: Arial;
+        }
+        .container{
+            width: 450px;
+            background:#fff;
+            margin:20px auto;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+        }
+        h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+        .questionBox{
+            background:#fafafa;
+            padding:15px;
+            margin-bottom:15px;
+            border-left:4px solid #4CAF50;
+            border-radius:5px;
+        }
+        .questionBox p{
+            font-size:16px;
+        }
+        label{
+            display:block;
+            padding:5px 0;
+            cursor:pointer;
+        }
+        .btn{
+            padding:10px;
+            width:100%;
+            font-size:16px;
+            background:#4CAF50;
+            border:none;
+            color:white;
+            border-radius:5px;
+            cursor:pointer;
+            margin-top:15px;
+        }
+        .btn:hover{
+            background:#45a049;
+        }
+        #result{
+            text-align:center;
+            font-size:18px;
+            margin-top:20px;
+        }
+        .correct{
+            background:#c8f7c5;
+        }
+        .wrong{
+            background:#f7c5c5;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Quiz App</h2>
+
+    <form id="quizForm"></form>
+
+    <button class="btn" onclick="submitQuiz()">Submit Quiz</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+let questions = [
+    { q:"1. What is the capital of India?", options:["Mumbai","Delhi","Chennai","Kolkata"], answer:1 },
+    { q:"2. Who is the father of Computers?", options:["Charles Babbage","Alan Turing","Bill Gates","Steve Jobs"], answer:0 },
+    { q:"3. HTML stands for?", options:["Hyper Text Markup Language","HighText Machine Learning","Hyper Machine Language","None"], answer:0 },
+    { q:"4. Which is a programming language?", options:["HTML","CSS","Python","Photoshop"], answer:2 },
+    { q:"5. 5 + 3 = ?", options:["6","8","10","7"], answer:1 },
+    { q:"6. CSS is used for?", options:["Structure","Styling","Database","Networking"], answer:1 },
+    { q:"7. Who developed Java?", options:["Dennis Ritchie","James Gosling","Guido van Rossum","Mark Zuckerberg"], answer:1 },
+    { q:"8. RAM stands for?", options:["Random Access Memory","Read Access Memory","Run Access Module","None"], answer:0 },
+    { q:"9. Which tag is used for a paragraph in HTML?", options:["<div>","<p>","<h1>","<text>"], answer:1 },
+    { q:"10. JS stands for?", options:["JavaScript","Just Script","Java Style","None"], answer:0 }
+];
+
+let form = document.getElementById("quizForm");
+
+// Load questions
+questions.forEach((q, index) => {
+    let box = document.createElement("div");
+    box.className = "questionBox";
+    box.id = "qBox"+index;
+
+    let html = `<p>${q.q}</p>`;
+
+    q.options.forEach((opt, i) => {
+        html += `
+        <label>
+            <input type="radio" name="q${index}" value="${i}">
+            ${opt}
+        </label>
+        `;
+    });
+
+    box.innerHTML = html;
+    form.appendChild(box);
+});
+
+
+function submitQuiz() {
+    let score = 0;
+
+    questions.forEach((q, i) => {
+        let selected = document.querySelector(`input[name="q${i}"]:checked`);
+        let box = document.getElementById("qBox"+i);
+
+        if (selected) {
+            if (selected.value == q.answer) {
+                score++;
+                box.classList.add("correct");
+            } 
+            else {
+                box.classList.add("wrong");
+            }
+        } else {
+            box.classList.add("wrong");
+        }
+    });
+
+    document.getElementById("result").innerHTML =
+        `<h3>Your Score: ${score} / ${questions.length}</h3>`;
+}
+</script>
+
+</body>
+</html>
