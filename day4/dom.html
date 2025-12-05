@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function press(){
+            let body = document.getElementById("main");
+            let hd = document.createElement("h1");
+            hd.innerHTML = "Gajii Govinda"; 
+            body.appendChild(hd);  
+            hd.style.backgroundColor = "black";
+            hd.style.color = "white";
+        }
+        function change(){
+            let a = document.getElementById("one");
+            a.innerHTML = "vasanth loves Samantha";
+        }
+        function removeElement(){
+            let body = document.getElementById("main");
+            let had = document.getElementById("had");
+            body.removeChild(had);
+        }
+    </script>
+</head>
+<body id="main">
+    <button onclick="press()">Create</button>
+    <h1 id="one">Vimal</h1>
+    <button onclick="change()">Change</button>
+    <h1 id="had">Heading Tag</h1>
+    <button onclick="removeElement()">Remove</button>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function () {
+            let isDark = false;
+
+            document.getElementById("modeBtn").onclick = function () {
+                if (isDark) {
+                    document.body.style.backgroundColor = "white";
+                    document.body.style.color = "black";
+                } else {
+                    document.body.style.backgroundColor = "black";
+                    document.body.style.color = "white";
+                }
+                isDark = !isDark;
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Light Mode</h1>
+    <button id="modeBtn">Switch Mode</button>
+</body>
+</html>
