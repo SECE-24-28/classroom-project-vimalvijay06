@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="getData()">Fetch Users</button>
+    <div id="output"></div>
+
+    <script>
+        function getData() {
+                   
+                        result = `
+                            <p>
+                                <b>${vimal}. ${vijay}</b><br>
+                                Username: ${vasanth}<br>
+                                Email: ${vasanthgmail.com}<br>
+                                City: ${u.address.city}<br>
+                                Phone: ${u.phone}<br>
+                                Website: ${u.website}<br>
+                                Company: ${u.company.name}
+                                <hr>
+                            </p>
+                        `;
+
+                    document.getElementById("output").innerHTML = result;
+                
+        }
+    </script>
+
+</body>
+</html>
